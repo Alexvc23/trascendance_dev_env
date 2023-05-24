@@ -1,0 +1,77 @@
+version: '3' # Docker compose version
+
+services: # This section contains all the services (containers) that will be created
+
+# ========================================
+# =            backend                   =
+# ========================================
+
+  backend: # Definition for the backend service
+    container_name: backend_container # Name of the backend container
+    build: # Specifies the directory where Dockerfile for backend is located
+      context: ./files/backend
+      dockerfile: Dockerfile
+    image: backend_image # Name of the backend image
+    volumes: # Shared volumes
+      - backend_volume:/usr/src/app/data # Map the named volume to /usr/src/app/data in the container
+    tty: true # Allocate a pseudo-TTY
+    stdin_open: true # Keep stdin open even if not attached
+    ports: # Port mapping
+      - 3000:3000 # Maps port 3000 on the host to port 3000 on the container
+
+# ========================================
+# =            frontend                  =
+# ========================================
+
+  frontend: # Definition for the frontend service
+    container_name: frontend_container # Name of the frontend container
+    build: # Specifies the directory where Dockerfile for frontend is located
+      context: ./files/frontend
+      dockerfile: Dockerfile
+    image: frontend_image # Name of the frontend image
+    volumes: # Shared volumes
+      - frontend_volume:/usr/src/app/data # Map the named volume to /usr/src/app/data in the container
+    tty: true # Allocate a pseudo-TTY
+    stdin_open: true # Keep stdin open even if not attached
+    ports: # Port mapping
+      - 8080:3000 # Maps port 8080 on the host to port 3000 on the container
+
+# ========================================
+# =            database                  =
+# ========================================
+  db: # Definition for the database service
+    container_name: db_container # Name of the database container
+    env_file:
+      - ./.env
+    image: postgres:latest # Specifies the Docker image to use for the database
+    volumes: # Shared volumes
+      - db_volume:/var/lib/postgresql/data # Maps the named volume db-data to /var/lib/postgresql/data in the container
+    tty: true # Allocate a pseudo-TTY
+    stdin_open: true # Keep stdin open even if not attached
+    environment: # Environment variables
+      - POSTGRES_DB=${POSTGRES_DB} # Sets the POSTGRES_DB environment variable in the container. The value comes from the .env file.
+      - POSTGRES_USER=${POSTGRES_USER} # Sets the POSTGRES_USER environment variable in the container. The value comes from the .env file.
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD} # Sets the POSTGRES_PASSWORD environment variable in the container. The value comes from the .env file.
+
+# ----------------------------------------
+#   VOLUMES
+# ----------------------------------------
+volumes:
+  db_volume: # Creates a named volume that persists data across container restarts
+    name: db_volume # The name of the volume
+
+  backend_volume: # Named volume for backend data
+    name: backend_volume # The name of the volume
+    driver: local # Use local driver
+    driver_opts: # Driver options
+      type: none
+      device: ../data/backend-data # Replace with your actual path
+      o: bind
+
+  frontend_volume: # Named volume for frontend data
+    name: frontend_volume # The name of the volume
+    driver: local # Use local driver
+    driver_opts: # Driver options
+      type: none
+      device: ../data/frontend-data # Replace with your actual path
+      o: bind
