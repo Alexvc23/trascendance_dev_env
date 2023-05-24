@@ -1,25 +1,36 @@
-{
-  "name": "backend", // The name of the project or package
-  "version": "1.0.0", // The version number of the project or package
-  "description": "", // A short description of the project or package
-  "main": "index.js", // The entry point of the project or package
-  "scripts": { // An object that contains scripts that can be run with `npm run <script-name>`
-    "start": "nest start", // A script to start the project
-    "test": "echo \"Error: no test specified\" && exit 1" // A script to run tests
-  },
-  "dependencies": { // An object that lists the dependencies of the project or package
-    "@nestjs/common": "^7.0.0", // A dependency on the NestJS common module
-    "@nestjs/core": "^7.0.0", // A dependency on the NestJS core module
-    "@nestjs/platform-express": "^7.0.0", // A dependency on the NestJS platform-express module
-    "reflect-metadata": "^0.1.13", // A dependency on the reflect-metadata module
-    "rxjs": "^6.5.5" // A dependency on the RxJS library
-  }
-}
+# :rocket: Backend
 
-    Dockerfile: This file is used by Docker to build an image of your backend application.
+This is the backend project of my application.
 
-    package.json: This file contains the list of dependencies your application needs and some metadata about your project. If you have a package-lock.json file, it should be included here too.
+## :gear: Installation
 
-    src/: This directory will contain all your JavaScript source code. The entry point to your application (commonly server.js, app.js, or index.js) will be located here, along with any other files required by your application.
+1. Clone this repository
+2. Run `npm install`
 
-    test/: This directory will contain your test scripts.
+## :wrench: Scripts
+
+The `package.json` includes the following scripts:
+
+- `npm start`: Start the project using Nest.
+- `npm test`: Run the test script.
+
+## :file_folder: Project Structure
+
+- `Dockerfile`: Used by Docker to build an image of the backend application.
+- `package.json`: Contains the list of dependencies and metadata about the project.
+- `src/`: Contains all the JavaScript source code. The entry point to the application (in this case, `index.js`) is located here, along with any other files required by the application.
+- `test/`: Contains the test scripts.
+
+## :package: Dependencies
+
+This project is built with the following dependencies:
+
+- `@nestjs/common`
+- `@nestjs/core`
+- `@nestjs/platform-express`
+- `reflect-metadata`
+- `rxjs`
+
+## :white_check_mark: Tests
+
+To run tests, use the `npm test` command.
