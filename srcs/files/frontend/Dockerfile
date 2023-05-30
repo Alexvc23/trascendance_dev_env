@@ -1,21 +1,24 @@
 # ./frontend/Dockerfile
-# Same as above, this sets the base image for the Docker container.
+# Set base image
 FROM node:lts
 
-# Sets the working directory inside the Docker container.
-WORKDIR /usr/src/app  
+# Set working directory inside the Docker container
+WORKDIR /app  
 
-# Copies the package.json and package-lock.json (if available) files to the Docker container's working directory.
+# Install vim
+RUN apt-get update && apt-get install -y vim
+
+# Copy package.json and package-lock.json files to the Docker container's working directory
 COPY package*.json ./  
 
-# Runs npm install to install all the dependencies defined in the package.json file. 
+# Run npm install to install all dependencies defined in the package.json file
 RUN npm install  
 
-# Copies everything from your current directory (on your local machine) to the Docker container's working directory.
+# Copy everything from the current directory to the Docker container's working directory
 COPY . .  
 
-# Tells Docker to listen on port 3000 at runtime. 
-EXPOSE 3000  
+# Run npm run build to build the React application
+RUN npm run build
 
-# Provides the default command to run when the Docker container starts. In this case, it's starting the React application.
-CMD [ "npm", "start" ]  
+# Start the application
+CMD ["npx", "serve", "-s", "build"]

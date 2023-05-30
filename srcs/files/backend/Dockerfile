@@ -19,8 +19,8 @@ COPY . .
 # This line runs the TypeScript compiler to build your application.
 RUN npm run prestart
 
-# This line tells Docker to listen on port 3000 at runtime. This is the port that your application will be available on.
-EXPOSE 3000  
+# This line tells Docker to listen on port 4000 at runtime. This is the port that your application will be available on.
+EXPOSE 4000  
 
 # This line provides the default command to run when the Docker container starts. In this case, it's starting the Node.js application.
 CMD [ "node", "dist/main" ]  

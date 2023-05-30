@@ -1,66 +1,54 @@
-# Backend 👨‍💻
+# Backend
 
-The backend part of the project is responsible for handling the business logic and data processing. It provides the necessary APIs for the frontend to interact with the application and communicates with the database to store and retrieve data.
+📦 Version: 1.0.0
 
-## 📁 File Structure
+## Description
 
-The backend directory has the following file structure:
+This is the backend application for the project.
 
-- `auth.controller.ts` 🎮: This file contains the implementation of the authentication controller. It defines the API routes for user authentication, such as the login route.
+## Main File
 
-- `auth.service.ts` 🔐: The authentication service handles the authentication logic, such as validating user credentials and generating authentication tokens.
+- Main: `index.js`
 
-- `app.module.ts` 📦: This is the main module of the application. It imports and declares all the necessary controllers, services, and providers.
+## Scripts
 
-- `user.service.ts` 👥: The user service is responsible for interacting with the database and performing operations related to user data, such as finding a user by their username.
+- Prestart: `tsc`
+  - ✨ Utility: Executes the TypeScript compiler (tsc) before starting the application.
+  
+- Start: `nest start`
+  - ✨ Utility: Starts the application using the NestJS framework's CLI command.
 
-## 🚀 API Routes
+- Test: `echo "Error: no test specified" && exit 1`
+  - ✨ Utility: Used for running tests. It echoes an error message and exits with an error code.
 
-The backend provides the following API routes:
+## Dependencies
 
-- `POST /auth/login` 🔐: This route is used for user authentication. It expects a JSON payload containing the username and password. The authentication service validates the credentials and returns a response indicating whether the login was successful or not.
+- "@nestjs/cli": "^9.0.0"
+  - ✨ Utility: NestJS CLI - Development tool for generating and managing NestJS applications.
 
-## 📦 Dependencies
+- "@nestjs/common": "^9.0.0"
+  - ✨ Utility: Provides common utilities and decorators used in NestJS applications.
 
-The backend project has the following dependencies:
+- "@nestjs/core": "^9.0.0"
+  - ✨ Utility: Core module of NestJS that provides the runtime engine and application context.
 
-- `@nestjs/common` 🚀: Provides common functionality and decorators used in NestJS applications.
+- "@nestjs/platform-express": "^9.0.0"
+  - ✨ Utility: Integrates NestJS with Express, a popular web framework for Node.js.
 
-- `@nestjs/core` 🏗️: The core module of NestJS that handles the application bootstrapping and dependency injection.
+- "@nestjs/typeorm": "^9.0.1"
+  - ✨ Utility: NestJS integration with TypeORM, an Object-Relational Mapping (ORM) library for TypeScript and JavaScript.
 
-- `reflect-metadata` 🌟: A library that enables decorators in TypeScript.
+- "typeorm": "^0.3.15"
+  - ✨ Utility: Flexible and powerful ORM for TypeScript and JavaScript.
 
-- `rxjs` 🔄: A library for reactive programming used by NestJS.
+- "pg": "^8.11.0"
+  - ✨ Utility: PostgreSQL client library for Node.js. Allows the application to connect to and interact with a PostgreSQL database.
 
-## 🚀 Getting Started
+- "reflect-metadata": "^0.1.13"
+  - ✨ Utility: Provides a way to add and read metadata to/from TypeScript classes and their properties.
 
-To run the backend server, follow these steps:
+- "rxjs": "^7.8.1"
+  - ✨ Utility: Reactive Extensions for JavaScript (RxJS) - Library for composing asynchronous and event-based programs.
 
-1. Install Node.js and npm on your machine if you haven't already.
-
-2. Navigate to the `backend` directory.
-
-3. Run the following command to install the project dependencies:
-
-
-4. Start the backend server:
-
-
-This will start the server on the specified port, and you should see a message indicating that the server is running.
-
-## ⚙️ Configuration
-
-The backend server can be configured using environment variables. The following variables can be set:
-
-- `PORT` 🌐: The port on which the server should listen (default: 3000).
-
-- `DATABASE_URL` 🗄️: The URL of the database connection.
-
-Make sure to configure these variables according to your environment.
-
-## 🧪 Testing
-
-The backend code can be tested using unit tests and integration tests. The tests can be found in the `test` directory. To run the tests, use the following command:
-
-
-This will execute the test suite and display the test results.
+- "serve-static": "^1.14.1"
+  - ✨ Utility: Middleware for serving static files in Express applications.
